@@ -1,0 +1,37 @@
+<h4 class="dialog-title">{{ data?.title || "Are You Sure?" }}</h4>
+
+<div class="dialog-content">
+	<p *ngIf="data?.message">{{ data?.message }}</p>
+	<p *ngIf="data?.notifyMessage">{{ data?.notifyMessage }}</p>
+	<div *ngIf="errorMessage || data?.errorMessage" class="alert alert-danger">
+		{{ errorMessage || data?.errorMessage }}
+	</div>
+</div>
+
+<div class="dialog-actions">
+	<app-spinner *ngIf="isLoading"></app-spinner>
+
+	<ng-container *ngIf="!isLoading">
+		<button
+			*ngIf="data?.errorMessage"
+			class="btn btn-secondary"
+			(click)="dialogRef.close()"
+		>
+			{{ data?.errorBtnText || "Close" }}
+		</button>
+		<button
+			*ngIf="data?.message"
+			class="btn btn-secondary"
+			(click)="dialogRef.close()"
+		>
+			Cancel
+		</button>
+		<button
+			*ngIf="data?.message && !data?.errorMessage && !errorMessage"
+			class="btn btn-primary"
+			(click)="onConfirm()"
+		>
+			Okay
+		</button>
+	</ng-container>
+</div>
