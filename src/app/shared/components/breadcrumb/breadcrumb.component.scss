@@ -1,0 +1,41 @@
+.page-titles {
+	background: #fff;
+}
+
+.page-titles h3 {
+	text-align: inherit;
+}
+
+.page-titles .breadcrumb {
+	padding: 0px;
+	background: transparent;
+	font-size: 1rem;
+	margin-bottom: 0;
+}
+
+.page-titles .breadcrumb li {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.page-titles .breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+	// content: '>';
+	font-size: 1rem;
+	// font-family: 'Font Awesome 5 Free';
+	font-weight: 900;
+	color: #a6b7bf;
+	padding-right: 0.5rem;
+	padding-left: 0;
+	float: left;
+}
+
+.page-titles .breadcrumb .breadcrumb-item.active {
+	color: #99abb4;
+	padding-left: 0.5rem;
+	padding-right: 0;
+
+	span {
+		display: inline-block;
+		// direction: ltr;
+	}
+}
