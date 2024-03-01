@@ -1,0 +1,7 @@
+.form-control,
+.form-select {
+	&.is-invalid:focus,
+	&:focus {
+		box-shadow: none;
+	}
+}

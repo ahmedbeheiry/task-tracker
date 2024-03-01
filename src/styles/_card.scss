@@ -1,0 +1,15 @@
+.card {
+	--bs-card-inner-border-radius: 10px;
+	--bs-card-border-radius: var(--bs-card-inner-border-radius);
+	--bs-card-cap-padding-y: 1rem;
+	--bs-card-cap-padding-x: 1rem;
+	border: none;
+	@include box-shadow;
+	background-color: #fff;
+
+	&-header {
+		background-color: #fff;
+		border-bottom: none;
+		font-size: 1.5rem;
+	}
+}

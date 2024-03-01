@@ -1,0 +1,61 @@
+<app-breadcrumb [data]="breadcrumbData"></app-breadcrumb>
+
+<section class="task-details card">
+	<h3 class="card-header">
+		{{ task.title }}
+	</h3>
+	<div class="dropdown">
+		<button data-bs-toggle="dropdown" aria-expanded="false">
+			<svg xmlns="http://www.w3.org/2000/svg">
+				<path
+					d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
+				></path>
+			</svg>
+		</button>
+		<ul class="dropdown-menu">
+			<li>
+				<a routerLink="edit" class="dropdown-item" type="button">
+					Edit
+				</a>
+			</li>
+			<li>
+				<button
+					class="dropdown-item"
+					type="button"
+					(click)="onDelete()"
+				>
+					Delete
+				</button>
+			</li>
+		</ul>
+	</div>
+	<div class="card-body">
+		<div class="meta-item">
+			<div class="meta-item__label">Priority</div>
+			<div class="meta-item__content">
+				<app-task-priority
+					[priority]="task.priority"
+				></app-task-priority>
+			</div>
+		</div>
+		<div class="meta-item">
+			<div class="meta-item__label">Created At</div>
+			<div class="meta-item__content">
+				{{ task.createdAt | date : "MMM d, y, h:mm a" }}
+			</div>
+		</div>
+		<div class="meta-item">
+			<div class="meta-item__label">Updated At</div>
+			<div class="meta-item__content">
+				{{ task.updatedAt | date : "MMM d, y, h:mm a" }}
+			</div>
+		</div>
+		<hr class="divider" />
+		<div class="details-item">
+			<div class="details-item__label">Description</div>
+			<div class="details-item__content">
+				{{ task.description }}
+			</div>
+		</div>
+	</div>
+</section>

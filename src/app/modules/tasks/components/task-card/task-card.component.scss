@@ -1,0 +1,67 @@
+@import 'mixins';
+
+.task-card {
+	position: relative;
+	margin-bottom: 1.5rem;
+	cursor: pointer;
+	@include transition();
+
+	&:hover {
+		@include box-shadow(0, 6px);
+	}
+
+	.card-header {
+		display: flex;
+		justify-content: space-between;
+		padding: 0;
+	}
+
+	.dropdown {
+		position: absolute;
+		inset-inline-end: 1rem;
+		inset-block-start: 1rem;
+		z-index: 2;
+
+		& > button {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: transparent;
+			border: none;
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			padding: 0;
+			@include transition();
+
+			&:hover {
+				background: #f6f6f6;
+			}
+		}
+
+		svg {
+			position: relative;
+			z-index: 1;
+			width: 16px;
+			height: 16px;
+			fill: var(--bs-gray-600);
+		}
+	}
+
+	.card-title {
+		flex-wrap: wrap;
+		font-size: 1.5rem;
+		margin-bottom: 0.25rem;
+	}
+
+	.card-meta {
+		margin-bottom: 1rem;
+	}
+
+	.card-text {
+		color: var(--bs-gray-600);
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+}

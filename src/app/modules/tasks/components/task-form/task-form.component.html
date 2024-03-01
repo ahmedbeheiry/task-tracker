@@ -1,0 +1,92 @@
+<app-breadcrumb [data]="breadcrumbData"></app-breadcrumb>
+
+<section class="card">
+	<h3 class="card-header">{{ isEditPage ? "Edit Task" : "Add Task" }}</h3>
+	<div class="card-body">
+		<form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+			<!-- Title -->
+			<div class="form-floating mb-4">
+				<input
+					type="text"
+					class="form-control"
+					id="task_title"
+					placeholder="Task Title"
+					formControlName="title"
+					[class.is-invalid]="validateFormControl(taskForm, 'title')"
+					aria-describedby="invalid_title_feedback"
+				/>
+				<label for="task_title">Task Title</label>
+				<div id="invalid_title_feedback" class="invalid-feedback">
+					Title is required!
+				</div>
+			</div>
+
+			<!-- Description -->
+			<div class="form-floating mb-4">
+				<textarea
+					class="form-control"
+					formControlName="description"
+					placeholder="Task Description"
+					id="task_desc"
+					[class.is-invalid]="
+						validateFormControl(taskForm, 'description')
+					"
+					aria-describedby="invalid_desc_feedback"
+				></textarea>
+				<label for="task_desc">Task Description</label>
+				<div id="invalid_desc_feedback" class="invalid-feedback">
+					Description is required!
+				</div>
+			</div>
+
+			<!-- Priority -->
+			<div class="form-floating">
+				<select
+					class="form-select"
+					formControlName="priority"
+					id="task_priority"
+					aria-label="Task Priority"
+					aria-describedby="invalid_priority_feedback"
+					[class.is-invalid]="
+						validateFormControl(taskForm, 'priority')
+					"
+				>
+					<option [value]="taskPriorityEnum.LOW">Low</option>
+					<option [value]="taskPriorityEnum.MEDIUM">Medium</option>
+					<option [value]="taskPriorityEnum.HIGH">High</option>
+				</select>
+				<label for="task_priority">Task Priority</label>
+				<div id="invalid_priority_feedback" class="invalid-feedback">
+					Priority is required!
+				</div>
+			</div>
+
+			<div class="form-cta">
+				<button class="btn btn-link" type="button" (click)="onReset()">
+					Reset
+				</button>
+				<div>
+					<button
+						class="btn btn-outline-secondary"
+						type="button"
+						(click)="onCancel()"
+					>
+						Cancel
+					</button>
+					<button
+						class="btn btn-primary"
+						type="submit"
+						[disabled]="isLoading"
+					>
+						<span
+							*ngIf="isLoading"
+							class="spinner-border spinner-border-sm"
+							aria-hidden="true"
+						></span>
+						{{ isEditPage ? "Edit Task" : "Add Task" }}
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</section>

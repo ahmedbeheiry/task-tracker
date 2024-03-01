@@ -1,0 +1,16 @@
+.form-floating > textarea.form-control {
+	height: 100px;
+}
+
+.form-cta {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 2rem;
+
+	button {
+		& + button {
+			margin-inline-start: 1rem;
+		}
+	}
+}

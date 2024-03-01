@@ -1,0 +1,50 @@
+<div class="task-card">
+	<div class="card" (click)="viewDetails()">
+		<div class="card-body">
+			<div class="card-header">
+				<h2 class="card-title">{{ task.title }}</h2>
+			</div>
+
+			<div class="card-meta">
+				<app-task-priority
+					[priority]="task.priority"
+				></app-task-priority>
+			</div>
+			<p class="card-text">{{ task.description }}</p>
+		</div>
+	</div>
+	<div class="dropdown">
+		<button data-bs-toggle="dropdown" aria-expanded="false">
+			<svg xmlns="http://www.w3.org/2000/svg">
+				<path
+					d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
+				></path>
+			</svg>
+		</button>
+		<ul class="dropdown-menu">
+			<li>
+				<button
+					class="dropdown-item"
+					type="button"
+					(click)="viewDetails()"
+				>
+					View
+				</button>
+			</li>
+			<li>
+				<button class="dropdown-item" type="button" (click)="onEdit()">
+					Edit
+				</button>
+			</li>
+			<li>
+				<button
+					class="dropdown-item"
+					type="button"
+					(click)="onDelete()"
+				>
+					Delete
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>

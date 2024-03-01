@@ -1,0 +1,34 @@
+:root {
+	--bs-body-color: #333;
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+	background-color: #f8f8f8;
+}
+
+a {
+	@include transition();
+	text-decoration: none;
+}
+
+main {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	min-height: 100%;
+	padding: 1rem;
+	padding-top: 120px;
+	position: relative;
+}
+
+.content {
+	display: flex;
+	width: 100%;
+	max-width: 700px;
+
+	& > *:not(router-outlet) {
+		width: 100%;
+	}
+}
