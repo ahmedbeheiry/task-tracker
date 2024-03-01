@@ -1,0 +1,39 @@
+.main-header {
+	height: 75px;
+	z-index: 997;
+	background: #fff;
+	box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+
+	.logo {
+		font-size: 21px;
+		margin-bottom: 0;
+
+		a {
+			color: var(--bs-primary);
+			text-decoration: none;
+		}
+	}
+
+	.navbar {
+		padding: 0;
+
+		ul {
+			margin: 0;
+			padding: 0;
+			display: flex;
+			list-style: none;
+			align-items: center;
+		}
+
+		a {
+			color: #555;
+			padding: 0 1rem;
+			font-size: 1rem;
+
+			&:hover,
+			&.active {
+				color: var(--bs-primary);
+			}
+		}
+	}
+}
