@@ -130,7 +130,6 @@ export class TaskFormComponent extends ValidateFormControl implements OnInit {
 			},
 			error: (err) => {
 				this.isLoading = false;
-				console.error('Error adding task', err);
 			},
 		});
 	}
