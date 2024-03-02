@@ -1,6 +1,6 @@
 <app-breadcrumb [data]="breadcrumbData"></app-breadcrumb>
 
-<section class="task-details card">
+<section class="task-details card" *ngIf="task">
 	<h3 class="card-header">
 		{{ task.title }}
 	</h3>

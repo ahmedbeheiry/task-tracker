@@ -1,3 +1,3 @@
-<span [class]="'badge ' + priorityStatus.className">
+<span *ngIf="priorityStatus" [class]="'badge ' + priorityStatus.className">
 	{{ priorityStatus.text }}
 </span>
