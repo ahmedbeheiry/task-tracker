@@ -4,6 +4,8 @@ import { environment } from '../../../../environments/environment.development';
 import { Observable } from 'rxjs';
 import { Task } from '../models/task.model';
 import { AddTaskBody } from '../models/add-task.model';
+import { createQueryString } from '../../../shared/helpers/http-params-methods';
+import { TaskFiltration } from '../models/tasks-filtration.model';
 
 @Injectable({
 	providedIn: 'root',
@@ -11,8 +13,9 @@ import { AddTaskBody } from '../models/add-task.model';
 export class TasksService {
 	constructor(private http: HttpClient) {}
 
-	getAllTasks(): Observable<Array<Task>> {
-		return this.http.get<Array<Task>>(`${environment.apiBaseURL}/tasks`);
+	getAllTasks(body: TaskFiltration = {}): Observable<Array<Task>> {
+		const params = createQueryString(body);
+		return this.http.get<Array<Task>>(`${environment.apiBaseURL}/tasks?${params}`);
 	}
 
 	getTask(id: string): Observable<Task> {

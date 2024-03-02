@@ -3,21 +3,28 @@
 	<a routerLink="add" class="btn btn-primary">Add Task</a>
 </header>
 
-<app-spinner *ngIf="isLoading"></app-spinner>
+<app-tasks-filtration
+	(filtrationValue)="onFiltration($event)"
+></app-tasks-filtration>
 
-<ng-container *ngIf="!isLoading && tasks?.length">
-	<p class="note">Note: You can arrange your tasks by drag & drop..</p>
-
-	<div cdkDropList (cdkDropListDropped)="drop($event)">
-		@for (task of tasks; track task) {
-		<div cdkDrag>
-			<app-task-card
-				[task]="task"
-				(deleteTask)="onDelete($event)"
-			></app-task-card>
-		</div>
-		}
-	</div>
+<ng-container *ngIf="isLoading; else notLoadingTemp">
+	<app-spinner></app-spinner>
 </ng-container>
+<ng-template #notLoadingTemp>
+	<ng-container *ngIf="tasks?.length">
+		<p class="note">Note: You can arrange your tasks by drag & drop..</p>
 
-<app-no-data *ngIf="!isLoading && !tasks?.length"></app-no-data>
+		<div cdkDropList (cdkDropListDropped)="drop($event)">
+			@for (task of tasks; track task) {
+			<div cdkDrag>
+				<app-task-card
+					[task]="task"
+					(deleteTask)="onDelete($event)"
+				></app-task-card>
+			</div>
+			}
+		</div>
+	</ng-container>
+
+	<app-no-data *ngIf="!tasks?.length"></app-no-data>
+</ng-template>

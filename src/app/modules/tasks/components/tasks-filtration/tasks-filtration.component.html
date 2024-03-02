@@ -1,0 +1,59 @@
+<div class="card card--mini mb-4">
+	<div class="card-header">Filtration</div>
+	<div class="card-body">
+		<form [formGroup]="filtrationForm">
+			<div class="row">
+				<!-- Title -->
+				<div class="col-md-4">
+					<div class="form-floating mb-4">
+						<input
+							type="text"
+							class="form-control"
+							id="task_title"
+							placeholder="Task Title"
+							formControlName="title"
+						/>
+						<label for="task_title">Task Title</label>
+					</div>
+				</div>
+				<!-- Priority -->
+				<div class="col-md-4">
+					<div class="form-floating">
+						<select
+							class="form-select"
+							formControlName="priority"
+							id="task_priority"
+							aria-label="Task Priority"
+						>
+							<option [value]="''">Task Priority</option>
+							<option [value]="taskPriorityEnum.LOW">Low</option>
+							<option [value]="taskPriorityEnum.MEDIUM">
+								Medium
+							</option>
+							<option [value]="taskPriorityEnum.HIGH">
+								High
+							</option>
+						</select>
+						<label for="task_priority">Task Priority</label>
+					</div>
+				</div>
+				<!-- Sort By Date -->
+				<div class="col-md-4">
+					<div class="form-floating">
+						<select
+							class="form-select"
+							formControlName="order"
+							id="date_sort"
+							aria-label="Sort By Date"
+						>
+							<option [value]="''">Sort By Date</option>
+							<option [value]="'asc'">Ascending</option>
+							<option [value]="'desc'">Descending</option>
+						</select>
+						<label for="date_sort">Sort By Date</label>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

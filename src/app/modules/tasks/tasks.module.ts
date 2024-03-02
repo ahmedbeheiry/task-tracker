@@ -11,6 +11,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { DialogModule } from '@angular/cdk/dialog';
 import { SharedModule } from '../../shared/shared.module';
 import { TaskDetailsComponent } from './components/task-details/task-details.component';
+import { TasksFiltrationComponent } from './components/tasks-filtration/tasks-filtration.component';
 
 @NgModule({
 	declarations: [
@@ -19,6 +20,7 @@ import { TaskDetailsComponent } from './components/task-details/task-details.com
 		TaskCardComponent,
 		TaskFormComponent,
 		TaskDetailsComponent,
+  TasksFiltrationComponent,
 	],
 	imports: [
 		CommonModule,

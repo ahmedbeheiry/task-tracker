@@ -5,6 +5,7 @@ import { Dialog } from '@angular/cdk/dialog';
 import { ConfirmationDialogComponent } from '../../../../shared/components/confirmation-dialog/confirmation-dialog.component';
 import { switchMap, tap } from 'rxjs';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { TaskFiltration } from '../../models/tasks-filtration.model';
 
 @Component({
 	selector: 'app-tasks',
@@ -14,6 +15,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 export class TasksComponent implements OnInit {
 	tasks: Array<Task>;
 	isLoading: boolean = false;
+	filtrationData: TaskFiltration = {};
 
 	constructor(private tasksService: TasksService, public dialog: Dialog) {}
 
@@ -23,13 +25,14 @@ export class TasksComponent implements OnInit {
 
 	getAllTasks(): void {
 		this.isLoading = true;
-		this.tasksService.getAllTasks().subscribe({
+		this.tasksService.getAllTasks(this.filtrationData).subscribe({
 			next: (res) => {
 				this.tasks = res;
 				this.isLoading = false;
 			},
 			error: (error) => {
 				this.isLoading = false;
+				this.tasks = [];
 			},
 		});
 	}
@@ -62,5 +65,10 @@ export class TasksComponent implements OnInit {
 
 	drop(event: CdkDragDrop<string[]>) {
 		moveItemInArray(this.tasks, event.previousIndex, event.currentIndex);
+	}
+
+	onFiltration(data: any): void {
+		this.filtrationData = data;
+		this.getAllTasks();
 	}
 }
