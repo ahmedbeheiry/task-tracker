@@ -3,13 +3,20 @@
 	--bs-card-border-radius: var(--bs-card-inner-border-radius);
 	--bs-card-cap-padding-y: 1rem;
 	--bs-card-cap-padding-x: 1rem;
+	--card-cap-font-size: 1.5rem;
 	border: none;
 	@include box-shadow;
 	background-color: #fff;
 
+	&--mini {
+		--bs-card-cap-padding-y: 0.5rem;
+		--card-cap-font-size: 1.2rem;
+		--bs-card-spacer-y: 0.5rem;
+	}
+
 	&-header {
 		background-color: #fff;
 		border-bottom: none;
-		font-size: 1.5rem;
+		font-size: var(--card-cap-font-size);
 	}
 }
