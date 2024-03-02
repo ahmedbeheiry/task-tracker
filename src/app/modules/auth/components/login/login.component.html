@@ -1,0 +1,76 @@
+<div class="row justify-content-center">
+	<div class="col-md-8">
+		<div class="card">
+			<div class="text-center card-header">Login</div>
+			<div class="card-body">
+				<code>
+					<pre>Email: {{ correctMail }}
+Password: {{ correctPassword }}
+					</pre>
+				</code>
+				<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+					<!-- Email -->
+					<div class="form-floating mb-4">
+						<input
+							type="email"
+							class="form-control"
+							id="email"
+							placeholder="Your Email"
+							formControlName="email"
+							[class.is-invalid]="
+								validateFormControl(loginForm, 'email')
+							"
+							aria-describedby="invalid_email_feedback"
+						/>
+						<label for="email">Your Email</label>
+						<div
+							id="invalid_email_feedback"
+							class="invalid-feedback"
+						>
+							Email is required!
+						</div>
+					</div>
+
+					<!-- Password -->
+					<div class="form-floating mb-4">
+						<input
+							type="password"
+							class="form-control"
+							id="password"
+							placeholder="Your Password"
+							formControlName="password"
+							[class.is-invalid]="
+								validateFormControl(loginForm, 'password')
+							"
+							aria-describedby="invalid_password_feedback"
+						/>
+						<label for="password">Your Password</label>
+						<div
+							id="invalid_password_feedback"
+							class="invalid-feedback"
+						>
+							Password is required!
+						</div>
+					</div>
+					<p class="text-danger text-center" *ngIf="errorMsg">
+						{{ errorMsg }}
+					</p>
+					<div class="d-grid">
+						<button
+							class="btn btn-primary"
+							type="submit"
+							[disabled]="isLoading"
+						>
+							<span
+								*ngIf="isLoading"
+								class="spinner-border spinner-border-sm"
+								aria-hidden="true"
+							></span>
+							Login
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

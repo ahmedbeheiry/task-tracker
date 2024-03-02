@@ -6,9 +6,11 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './modules/core/core.module';
+import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
+import { GuestLayoutComponent } from './layouts/guest-layout/guest-layout.component';
 
 @NgModule({
-	declarations: [AppComponent],
+	declarations: [AppComponent, DefaultLayoutComponent, GuestLayoutComponent],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,

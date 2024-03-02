@@ -24,6 +24,16 @@
 						My Tasks
 					</a>
 				</li>
+				<li>
+					<ng-container *ngIf="currentUser; else loginTemp">
+						<button class="btn btn-danger" (click)="onLogout()">
+							Logout
+						</button>
+					</ng-container>
+					<ng-template #loginTemp>
+						<button class="btn btn-primary" (click)="onLogin()">Login Now</button>
+					</ng-template>
+				</li>
 			</ul>
 		</nav>
 		<!-- .navbar -->
